@@ -27,7 +27,7 @@ app.get("/gravatar/:user_id", async (req, res) => {
     });
     if (userResult.rowCount > 0) {
       const { active_profile_id } = userResult.first();
-      const cdnUrl = `https://${cloudFrontDomainName}/${active_profile_id}`;
+      const cdnUrl = `https://${cloudFrontDomainName}/user/${user_id}/profile/${active_profile_id}`;
 
       // Check if the image is available on the CDN
       const cdnResponse = await fetch(cdnUrl, { method: "HEAD" });
